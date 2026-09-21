@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>下載元素週期寶</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#14161F">
+<style>
+:root{--bg:#14161F;--surface-tint:#25293D;--stroke:#3A405A;--text:#F5F5F7;--muted:#A6ABBD;--primary:#5C6BC0;
+--f-zh:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;--fs-h:26px;--fs-body:16px}
+*{box-sizing:border-box;margin:0}
+body{min-height:100vh;min-height:100dvh;background:var(--bg);color:var(--text);font-family:var(--f-zh);font-size:var(--fs-body);line-height:1.7;display:grid;place-items:center;padding:24px;text-align:center}
+img{width:96px;height:96px;border-radius:24px;margin:0 auto 20px}
+h1{font-size:var(--fs-h);margin-bottom:8px}
+p{color:var(--muted)}
+.btns{display:grid;gap:12px;margin:28px auto 0;max-width:320px}
+.btn{display:flex;align-items:center;justify-content:center;min-height:52px;border-radius:16px;font-weight:700;text-decoration:none;color:var(--text);border:1px solid var(--stroke);background:var(--surface-tint)}
+.btn.main{background:var(--primary);border-color:var(--primary)}
+.btn[aria-disabled="true"]{opacity:.6;pointer-events:none}
+a.more{display:inline-block;margin-top:24px;color:var(--muted);font-size:14px}
+</style>
+</head>
+<body>
+<main>
+  <img src="../assets/icon.webp" alt="元素週期寶 App 圖示" width="96" height="96">
+  <h1 id="title">下載元素週期寶</h1>
+  <p id="msg">請選擇你的手機系統</p>
+  <div class="btns">
+    <a class="btn main" id="play" href="https://play.google.com/store/apps/details?id=com.ayumi.periodictable" rel="noopener">Android・Google Play</a>
+    <!-- TODO App Store 正式連結：替換此處與下方 script 的 APPLE，並移除 aria-disabled -->
+    <a class="btn" id="apple" href="#" aria-disabled="true">iPhone・App Store（補上中）</a>
+  </div>
+  <a class="more" href="../">先看看 App 介紹</a>
+</main>
+<script>
+/* 依系統自動跳轉：iPhone/iPad → App Store，Android → Google Play；其他停在此頁讓人自己選 */
+(function(){
+  var PLAY=document.getElementById('play').href;
+  var APPLE='';   /* TODO 填入 App Store 網址；空字串時 iPhone 不跳轉、停在本頁 */
+  var ua=navigator.userAgent||'';
+  var isIOS=/iPhone|iPad|iPod/.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  var isAndroid=/Android/.test(ua);
+  if(APPLE){var a=document.getElementById('apple');a.href=APPLE;a.removeAttribute('aria-disabled');a.textContent='iPhone・App Store'}
+  if(isAndroid){document.getElementById('msg').textContent='正在前往 Google Play…';location.replace(PLAY)}
+  else if(isIOS&&APPLE){document.getElementById('msg').textContent='正在前往 App Store…';location.replace(APPLE)}
+})();
+</script>
+</body>
+</html>
