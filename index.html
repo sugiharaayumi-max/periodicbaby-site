@@ -94,7 +94,8 @@ h1{font-size:var(--fs-h1);line-height:var(--lh-h1);letter-spacing:.01em}
 h1 em{font-style:normal;color:var(--accent)}
 .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
 .badge{font-size:var(--fs-sm);padding:6px 14px;border-radius:999px;background:var(--surface-tint);border:1px solid var(--stroke)}
-.phone{justify-self:center;width:min(100%,320px);border-radius:36px;border:1px solid var(--stroke);box-shadow:0 30px 80px rgba(0,0,0,.5);overflow:hidden;background:var(--surface)}
+.phone{position:relative;justify-self:center;align-self:start;width:min(100%,320px);aspect-ratio:540/1212;border-radius:36px;border:1px solid var(--stroke);box-shadow:0 30px 80px rgba(0,0,0,.5);overflow:hidden;background:var(--surface)}
+.phone img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 @media (max-width:899px){
   .hero .wrap{grid-template-columns:1fr}
   .phone{width:min(76%,300px);order:2}
@@ -115,7 +116,8 @@ h1 em{font-style:normal;color:var(--accent)}
 /* screenshots */
 .shots{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:40px}
 .shots figure{display:flex;flex-direction:column;gap:12px}
-.shots img{border-radius:22px;border:1px solid var(--stroke);background:var(--surface)}
+.shot-frame{position:relative;width:100%;aspect-ratio:540/1212;border-radius:22px;border:1px solid var(--stroke);overflow:hidden;background:var(--surface)}
+.shot-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .shots figcaption{font-size:var(--fs-sm);color:var(--muted);text-align:center}
 @media (max-width:899px){
   .shots{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;padding:0 var(--inset);margin:40px calc(var(--inset) * -1) 0}
@@ -181,7 +183,7 @@ footer nav{gap:20px;flex-wrap:wrap}
         <a class="btn" id="appstore" href="#" aria-disabled="true">App Store（連結補上中）</a>
       </div>
     </div>
-    <img class="phone" src="assets/shot-1.webp" width="540" height="1212" alt="元素週期寶首頁：今日推薦元素氫與中英文發音按鈕">
+    <div class="phone"><img src="assets/shot-1.webp" width="540" height="1212" alt="元素週期寶首頁：今日推薦元素氫與中英文發音按鈕"></div>
   </div>
 </section>
 
@@ -219,10 +221,10 @@ footer nav{gap:20px;flex-wrap:wrap}
     <p class="eyebrow">實際畫面</p>
     <h2>四個畫面，就是全部</h2>
     <div class="shots">
-      <figure><img src="assets/shot-1.webp" width="540" height="1212" loading="lazy" alt="首頁今日推薦元素"><figcaption>今日元素與發音</figcaption></figure>
-      <figure><img src="assets/shot-2.webp" width="540" height="1212" loading="lazy" alt="可雙指縮放的完整週期表"><figcaption>雙指縮放週期表</figcaption></figure>
-      <figure><img src="assets/shot-3.webp" width="540" height="1212" loading="lazy" alt="趣味小測驗畫面"><figcaption>小測驗</figcaption></figure>
-      <figure><img src="assets/shot-4.webp" width="540" height="1212" loading="lazy" alt="118 個元素角色圖鑑"><figcaption>元素寶寶圖鑑</figcaption></figure>
+      <figure><div class="shot-frame"><img src="assets/shot-1.webp" width="540" height="1212" loading="lazy" alt="首頁今日推薦元素"></div><figcaption>今日元素與發音</figcaption></figure>
+      <figure><div class="shot-frame"><img src="assets/shot-2.webp" width="540" height="1212" loading="lazy" alt="可雙指縮放的完整週期表"></div><figcaption>雙指縮放週期表</figcaption></figure>
+      <figure><div class="shot-frame"><img src="assets/shot-3.webp" width="540" height="1212" loading="lazy" alt="趣味小測驗畫面"></div><figcaption>小測驗</figcaption></figure>
+      <figure><div class="shot-frame"><img src="assets/shot-4.webp" width="540" height="1212" loading="lazy" alt="118 個元素角色圖鑑"></div><figcaption>元素寶寶圖鑑</figcaption></figure>
     </div>
   </div>
 </section>
