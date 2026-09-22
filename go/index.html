@@ -28,8 +28,7 @@ a.more{display:inline-block;margin-top:24px;color:var(--muted);font-size:14px}
   <p id="msg">請選擇你的手機系統</p>
   <div class="btns">
     <a class="btn main" id="play" href="https://play.google.com/store/apps/details?id=com.ayumi.periodictable" rel="noopener">Android・Google Play</a>
-    <!-- TODO App Store 正式連結：替換此處與下方 script 的 APPLE，並移除 aria-disabled -->
-    <a class="btn" id="apple" href="#" aria-disabled="true">iPhone・App Store（補上中）</a>
+    <a class="btn" id="apple" href="https://apps.apple.com/tw/app/%E5%85%83%E7%B4%A0%E9%80%B1%E6%9C%9F%E5%AF%B6/id6808062128" rel="noopener">iPhone・App Store</a>
   </div>
   <a class="more" href="../">先看看 App 介紹</a>
 </main>
@@ -37,11 +36,10 @@ a.more{display:inline-block;margin-top:24px;color:var(--muted);font-size:14px}
 /* 依系統自動跳轉：iPhone/iPad → App Store，Android → Google Play；其他停在此頁讓人自己選 */
 (function(){
   var PLAY=document.getElementById('play').href;
-  var APPLE='';   /* TODO 填入 App Store 網址；空字串時 iPhone 不跳轉、停在本頁 */
+  var APPLE='https://apps.apple.com/tw/app/%E5%85%83%E7%B4%A0%E9%80%B1%E6%9C%9F%E5%AF%B6/id6808062128';
   var ua=navigator.userAgent||'';
   var isIOS=/iPhone|iPad|iPod/.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
   var isAndroid=/Android/.test(ua);
-  if(APPLE){var a=document.getElementById('apple');a.href=APPLE;a.removeAttribute('aria-disabled');a.textContent='iPhone・App Store'}
   if(isAndroid){document.getElementById('msg').textContent='正在前往 Google Play…';location.replace(PLAY)}
   else if(isIOS&&APPLE){document.getElementById('msg').textContent='正在前往 App Store…';location.replace(APPLE)}
 })();

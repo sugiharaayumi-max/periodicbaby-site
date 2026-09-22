@@ -18,7 +18,6 @@ App 本體在另一個 repo：`/Users/ivyhsu/development/元素週期表`。宣�
 
 ## 上線前清單
 - [ ] 換掉 `SITE_URL`（`index.html` 的 canonical、og:url、og:image、twitter:image）
-- [ ] App Store 網址：`index.html` 兩個按鈕、`go/index.html` 的 `APPLE`
 - [ ] 確認 Google Play 連結真的可開（目前由套件名 `com.ayumi.periodictable` 推得）
 - [ ] 確認 `--muted` 灰色
 - [ ] 回饋表單區塊（待選 Tally 或 Google 表單）
